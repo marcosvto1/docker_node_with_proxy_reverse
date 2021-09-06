@@ -11,6 +11,11 @@ const config = {
 
 const connection = mysql.createConnection(config)
 
+
+function initScript() {
+
+}
+
 app.get('/', (req, res) => {
 
   const sql = 'INSERT INTO people(name) values ("marcos")';
@@ -27,7 +32,7 @@ app.get('/', (req, res) => {
     }
 
     const peoples = result.reduce((acc, item) => {
-      return acc + `<li>${item.name}</li>`
+      return acc + `<li>${item.id}-${item.name}</li>`
     }, "")
 
     const html = `

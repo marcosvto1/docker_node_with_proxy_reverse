@@ -24,6 +24,4 @@ USER node
 
 EXPOSE 5000
 
-RUN ls -la node_modules
-
 CMD ["node", "src/index.js"]
