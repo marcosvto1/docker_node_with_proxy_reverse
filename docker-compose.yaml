@@ -12,17 +12,17 @@ services:
       - "8080:8080"
     networks:
       - infra-network
-
   web:
     build:
       context: "."
     container_name: "web"
+    command: npm run start
     ports: 
       - 5000:5000
     volumes:
-      - .:/usr/src/app
+      - ./src:/usr/src/app/src
     tty: true
-    entrypoint: dockerize -wait tcp://db:3306 --timeout 20s docker-entrypoint.sh node src/index.js
+    entrypoint: dockerize -wait tcp://db:3306 --timeout 20s docker-entrypoint.sh
     depends_on:
       - db
     networks:
